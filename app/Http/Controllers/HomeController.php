@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Application;
 use Validator, DB, Redirect;
+use App\Models\Master\District;
+
 class HomeController extends Controller
 {
     /**
@@ -24,7 +26,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return 'NOrmal User';
+        $districts = District::pluck('name', 'id');
+        return view('users.homepage', compact('districts'));
     }
 
 

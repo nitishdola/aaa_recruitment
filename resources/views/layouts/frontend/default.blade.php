@@ -19,7 +19,8 @@
   <!-- CSS
 ================================================== -->
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ asset('frontend/plugins/bootstrap/bootstrap.min.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('frontend/plugins/bootstrap/bootstrap.min.css') }}"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- FontAwesome -->
   <link rel="stylesheet" href="{{ asset('frontend/plugins/fontawesome/css/all.min.css') }}">
   <!-- Animation -->
@@ -34,6 +35,8 @@
   <style>
     .help-inline { color:  #c70039 ; }
   </style>
+
+  @yield('pageCss')
 
 </head>
   <body>
@@ -65,6 +68,8 @@
       <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
       <!--custom JS -->
       <script src="{{ asset('frontend/js/script.js') }}"></script>
+
+      @yield('pageJs')
 
     </div><!-- Body inner end -->
   </body>

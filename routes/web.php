@@ -12,11 +12,13 @@
 */
 Route::get('/', function () {
     return view('layouts.frontend.home');
-})->name('home');
+});
 
 
-Route::post('registration', 'Auth\RegisterController@registration')->name('register');
-Route::get('verify-otp', 'Auth\RegisterController@verifyOtp')->name('otp_entry');
+Route::post('registration', 'Auth\RegisterController@userRegistration')->name('register_user');
+Route::get('verify-otp/{mobile_number}', 'Auth\RegisterController@submitOtp')->name('otp_entry');
+Route::get('error', 'ErrorController@unauthorizedAccess')->name('error_entry');
+Route::post('verify-otp', 'Auth\RegisterController@verifyOtp')->name('otp_verify');
 
 
 

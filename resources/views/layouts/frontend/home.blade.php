@@ -11,11 +11,21 @@
 
       <div class="row">
 
+          @if(Session::has('message'))
+
+             <div class="col-lg-12">
+                   <div class="alert {{ Session::get('alert-class', 'alert-info') }}">
+                         <button type="button" class="close" data-dismiss="alert"></button>
+                         {!! Session::get('message') !!}
+                   </div>
+              </div>
+          @endif
+        
       		@if ($errors->any())
                 {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>')) !!}
             @endif
 
-          	{!! Form::open(array('route' => 'register', 'id' => 'contact-form', 'class' => 'col-md-12')) !!}
+          	{!! Form::open(array('route' => 'register_user', 'id' => 'contact-form', 'class' => 'col-md-12')) !!}
 			  <div class="error-container"></div>
 
 				

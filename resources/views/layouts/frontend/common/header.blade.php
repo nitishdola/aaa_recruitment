@@ -4,7 +4,10 @@
         <div class="row align-items-center">
           <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
               <a class="d-block" href="index.html">
-                <img loading="lazy" src="images/logo.png" alt="Constra">
+                
+                <img loading="lazy" src="{{ asset('img/aaa_logo.jpg') }}" alt="Atal Amrit Abhiyan Society, Assam">
+
+                <img loading="lazy" src="{{ asset('img/pmjay_2.jpg') }}" alt="Atal Amrit Abhiyan Society, Assam">
               </a>
           </div><!-- logo end -->
 
@@ -27,6 +30,14 @@
                     </div>
                   </div>
                 </li>
+
+                <li class="header-get-a-quote">
+                    @if(!auth()->user())
+                    <a class="btn btn-primary" href="{{ route('login') }}">LOGIN</a>
+                    @else
+                    <button class="btn btn-primary">Hello {{ auth()->user()->name }} </button>
+                    @endif
+                  </li>
                 
               </ul><!-- Ul end -->
           </div><!-- header right end -->
@@ -48,11 +59,9 @@
               <div id="navbar-collapse" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link" >Home</a>
+                        <a href="{{ url('/') }}" class="nav-link" >Home</a>
                     </li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">ToR</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">Register</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">Login</a></li>
+          					<li class="nav-item"><a class="nav-link" href="contact.html">ToR</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                   </ul>
               </div>
