@@ -16,6 +16,18 @@ Route::get('/contact', function () {
     return view('layouts.frontend.contact');
 });
 
+Route::get('send-mail', function () {
+   
+    $details = [
+        'name' => 'Nitish Dolakasharia',
+        'otp' => 5567,
+    ];
+   
+    \Mail::to('nitish.dola@gmail.com')->send(new \App\Mail\OtpMail($details));
+   
+    dd("Email is Sent.");
+});
+
 
 Route::post('registration', 'Auth\RegisterController@userRegistration')->name('register_user');
 Route::get('verify-otp/{mobile_number}', 'Auth\RegisterController@submitOtp')->name('otp_entry');

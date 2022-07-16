@@ -94,7 +94,7 @@ class RegisterController extends Controller
 
             $user = User::create([
                     'name'          => trim($request->get('name')),
-                    'email'         => trim($request->get('email_address')),
+                    'email'         => trim($request->get('email')),
                     'mobile_number' => trim($request->get('mobile_number')),
                     'password'      => Hash::make($request->get('password')),
                     'otp'           => $otp,
@@ -102,7 +102,11 @@ class RegisterController extends Controller
             ]);
 
 
-            $credentials = $request->only('email', 'password');
+            $details = [
+                'name' => $request->get('name'),
+                'otp' => $otp,
+            ];
+            \Mail::to($request->email)->send(new \App\Mail\OtpMail($details));
 
             DB::commit();
             
@@ -113,12 +117,14 @@ class RegisterController extends Controller
                 ->send();
             */
 
+            
+
             return Redirect::route('otp_entry', 
                                         ['mobile_number' => 
                                             Crypt::encrypt(trim($request->get('mobile_number')))
                                         ]
                                     )->with(
-                                        ['message' => 'OTP has been sent to your mobile. This OTP will be expired in 5 minutes.', 'alert-class' => 'alert-success'
+                                        ['message' => 'OTP has been sent to your mobile and email address. This OTP will be expired in 5 minutes.', 'alert-class' => 'alert-success'
                                         ]);
         }catch(\Exception $e){
             return redirect()->back()->withErrors($e->getMessage())->withInput();
@@ -151,10 +157,14 @@ class RegisterController extends Controller
                 $user->is_active = 1;
                 $user->save();
 
+                toastr()->success('OTP verified successfully');
+
+
                 return Redirect::route('login')->with(['message' => 'OTP verified successfully ! PLease login to submit your application']);
                 
             }
         }else{
+            toastr()->error('Invalid OTP');
             return Redirect::back()->with(
                                         ['message' => 'Invalid OTP. Please try again.', 'alert-class' => 'alert-danger'
                                         ]);

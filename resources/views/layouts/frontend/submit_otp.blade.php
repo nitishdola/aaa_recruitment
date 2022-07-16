@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
       <div class="ts-intro">
-          <h3 class="into-sub-title">ENTER THE OTP YOU HAVE RECEIVED</h3>
+          <h3 class="into-sub-title">ENTER THE OTP YOU HAVE RECEIVED IN YOUR MOBILE and EMAIL</h3>
       </div><!-- Intro box end -->
 
       <div class="gap-20"></div>
