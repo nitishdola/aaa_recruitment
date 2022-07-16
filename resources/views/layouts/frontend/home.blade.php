@@ -5,6 +5,7 @@
     <div class="col-lg-6">
       <div class="ts-intro">
           <h3 class="into-sub-title">REGISTER</h3>
+
       </div><!-- Intro box end -->
 
       <div class="gap-20"></div>
@@ -66,8 +67,10 @@
 				
 			  
 			  <div class="text-right"><br>
-				<button class="btn btn-primary solid blank" type="submit">SUBMIT</button>
+				  <button class="btn btn-primary solid blank" type="submit">SUBMIT</button>
 			  </div>
+
+        <p>Already Registered ? <a href="{{ url('/login') }}">Login Here</a> </p>
 			{!! Form::close() !!}
       </div><!-- Content row 1 end -->
 
@@ -89,11 +92,19 @@
           
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#our-values-accordion">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidata
+                  <p>
+                    1. Register with your Name, Email and Mobile Number.
+                  </p>
+                  <p>
+                    2. Please make sure that your email and mobile number is active, OTP will be sent your mobile and email.
+                  </p>
+                  <p>
+                    3. All files to be uploaded will be in PDF format only.
+                  </p>
                 </div>
             </div>
           </div>
-          <div class="card">
+          <!-- <div class="card">
             <div class="card-header p-0 bg-transparent" id="headingTwo">
                 <h2 class="mb-0">
                   <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -106,7 +117,7 @@
                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidata
                 </div>
             </div>
-          </div>
+          </div> -->
           <div class="card">
             <div class="card-header p-0 bg-transparent" id="headingThree">
                 <h2 class="mb-0">
@@ -117,7 +128,7 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#our-values-accordion">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidata
+                  
                 </div>
             </div>
           </div>

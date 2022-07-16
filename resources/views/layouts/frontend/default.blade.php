@@ -34,6 +34,13 @@
   <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
   <style>
     .help-inline { color:  #c70039 ; }
+
+    @media screen and (min-width: 800px) {
+        .logout-btn {
+          padding-left: 600px;
+        }
+    }
+
   </style>
 
   @yield('pageCss')

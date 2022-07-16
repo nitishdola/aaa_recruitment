@@ -59,10 +59,26 @@
               <div id="navbar-collapse" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a href="{{ url('/') }}" class="nav-link" >Home</a>
+                        <a href="{{ route('frontend_home') }}" class="nav-link" >Home</a>
                     </li>
-          					<li class="nav-item"><a class="nav-link" href="contact.html">ToR</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          					<li class="nav-item"><a class="nav-link" href="#">ToR</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
+
+                    @guest
+                    
+                    @else
+                    <li class="nav-item logout-btn">
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                    </li>
+                    @endif
                   </ul>
               </div>
             </nav>
