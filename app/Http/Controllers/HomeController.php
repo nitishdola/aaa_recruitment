@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        toastr()->success('Login Success');
+        
         $districts = District::pluck('name', 'id');
         return view('users.homepage', compact('districts'));
     }

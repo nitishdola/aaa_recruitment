@@ -80,6 +80,9 @@ class RegisterController extends Controller
             //MOBILE NUMBER EXISTS CHECK
             $userPhoneExist = User::where([['mobile_number',$request->mobile_number],['otp_verified_at','!=',null],['is_active',1]])->count();
             if($userPhoneExist){
+
+                toastr()->error('Mobile number already exists');
+
                 return back()->with(['message' => 'Mobile number already exists', 'alert-class' => 'alert-danger']);
             }
 
@@ -87,6 +90,7 @@ class RegisterController extends Controller
             //EMAIL EXISTS CHECK
             $userEmailExist = User::where([['email',$request->email],['otp_verified_at','!=',null],['is_active',1]])->count();
             if($userEmailExist){
+                toastr()->error('Email already exists');
                 return back()->with(['message' => 'Email already exists', 'alert-class' => 'alert-danger']);
             }
 
@@ -149,6 +153,7 @@ class RegisterController extends Controller
             $minutes = (int)(($datetime2 - $datetime1)/60);
 
             if($minutes > 5) {
+                toastr()->error('OTP Expired');
                 return Redirect::route('home')->with(
                                         ['message' => 'OTP Expired. Please try again from home page.', 'alert-class' => 'alert-danger'
                                         ]);
@@ -158,7 +163,6 @@ class RegisterController extends Controller
                 $user->save();
 
                 toastr()->success('OTP verified successfully');
-
 
                 return Redirect::route('login')->with(['message' => 'OTP verified successfully ! PLease login to submit your application']);
                 

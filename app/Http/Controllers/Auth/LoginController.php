@@ -53,7 +53,7 @@ class LoginController extends Controller
             if (auth()->user()->is_admin == 1) {
                 return redirect()->route('admin_home');
             }else{
-
+                toastr()->success('Login Success');
                 return redirect()->route('home');
             }
         }else{

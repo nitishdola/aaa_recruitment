@@ -96,10 +96,10 @@
                     1. Register with your Name, Email and Mobile Number.
                   </p>
                   <p>
-                    2. Please make sure that your email and mobile number is active, OTP will be sent your mobile and email.
+                    2. Please make sure that your email and mobile number is active, OTP will be sent to your mobile and email.
                   </p>
                   <p>
-                    3. All files to be uploaded will be in PDF format only.
+                    3. All files to be uploaded will be in PDF/JPG/PNG format and should be less than 2MB.
                   </p>
                 </div>
             </div>

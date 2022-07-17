@@ -27,6 +27,19 @@
          {!! Form::text('name', auth()->user()->name , ['class' => 'form-control form-control-subject', 'id' => 'name', 'placeholder' => ' ', 'required' => true, 'autocomplete' => 'off']) !!}
          {!! $errors->first('name', '<span class="help-inline">:message</span>') !!}
       </div>
+
+      <div class="form-group {{ $errors->has('father_name') ? 'has-error' : ''}}">
+         <label>Father's Name</label>
+         {!! Form::text('father_name', null , ['class' => 'form-control form-control-subject', 'id' => 'father_name', 'placeholder' => ' ', 'required' => true, 'autocomplete' => 'off']) !!}
+         {!! $errors->first('father_name', '<span class="help-inline">:message</span>') !!}
+      </div>
+
+      <div class="form-group {{ $errors->has('mother_name') ? 'has-error' : ''}}">
+         <label>Mother's Name</label>
+         {!! Form::text('mother_name', null , ['class' => 'form-control form-control-subject', 'id' => 'mother_name', 'placeholder' => ' ', 'required' => true, 'autocomplete' => 'off']) !!}
+         {!! $errors->first('mother_name', '<span class="help-inline">:message</span>') !!}
+      </div>
+
       <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
          <label>Email</label>
          {!! Form::email('email', auth()->user()->email, ['class' => 'form-control form-control-subject', 'id' => 'email', 'readonly' => true, 'required' => true, 'autocomplete' => 'off']) !!}
@@ -352,8 +365,18 @@
 
 
       </div>
-   <div class=""><br>
-      <button class="btn btn-primary solid blank" type="submit">SUBMIT</button>
+
+      <p>   
+
+         <input class="form-check-input" name="declaration" type="checkbox" value="yes" id="declaration">
+         <label class="form-check-label" for="declaration">
+          I declare that above entries in the Application Form has been filled up by me and the entries made are correct as per my documents and to the best of my knowledge and belief. I agree that if any statement is proved to be false then the Authority shall have the right to take legal action against me for submitting false information or statement. I further declare that there is no allegation of misconduct against me and I have never been convicted for any offence involving moral turpitude. 
+        </label>
+
+
+      </p>
+   <div class="sbmt"><br>
+      <button class="btn btn-primary solid blank" disabled="disabled" id="submit_btn" type="submit">SUBMIT</button>
    </div>
    {!! Form::close() !!}
 </div>
@@ -364,9 +387,29 @@
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+<script src="{{ asset('frontend/js/moment.js') }}"></script>
+
 <script>
+
+   function calculateAge(dob) { // birthday is a date
+      var startDate = moment(dob, 'YYYY-MM-DD');
+      var endDate = moment('2022-01-01', 'YYYY-MM-DD');
+      return yearDiff = endDate.diff(startDate, 'years');
+   }
+   
+
    $('.datepicker').Zebra_DatePicker({
-       view: 'years'
+         view: 'years',
+         onSelect: function() {
+            dob_selected = $(this).val();
+
+            if(calculateAge(dob_selected) > 40) {
+               $('#submit_btn').attr('disabled','disabled');
+               alert('Age must be below 40 years to apply.');
+            }else{
+               $('#submit_btn').removeAttr('disabled');
+            }
+         }
    });
 
    $('.select2').select2();
@@ -402,6 +445,16 @@
          $('#expinhealth').hide();
       }
    });
+
+   $('#declaration').click(function() {
+      decla = $(this).val();
+
+      if($('#declaration').prop('checked', true)) {
+         $('#submit_btn').removeAttr('disabled');
+      }else{
+         $('#submit_btn').attr('disabled','disabled');
+      }
+   })
    
 </script>
 
