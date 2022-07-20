@@ -112,16 +112,9 @@ class RegisterController extends Controller
             ];
             \Mail::to($request->email)->send(new \App\Mail\OtpMail($details));
 
-            DB::commit();
-            
-            /*
-            Msg91::otp()
-                ->to(919706125041) 
-                ->template('your_template_id')
-                ->send();
-            */
+            Msg91::sms()->to(['91'.$request->get('mobile_number')])->flow('62d4f96554f44b38077a936e')->variable('OTP', $otp)->send();
 
-            
+            DB::commit();
 
             return Redirect::route('otp_entry', 
                                         ['mobile_number' => 

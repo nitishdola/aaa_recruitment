@@ -40,4 +40,8 @@ return [
         'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
     ],
 
+    "msg91" => [
+        'key' => env("Msg91_KEY"),
+      ],
+
 ];
